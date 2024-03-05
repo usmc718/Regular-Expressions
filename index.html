@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression Functions</title>
+    <script>
+        // JavaScript functions
+        function FindCount(target, searchstr) {
+            const regex = new RegExp(searchstr, 'g');
+            const matches = target.match(regex);
+            return matches ? matches.length : 0;
+        }
+
+        function FindReplace(target, find, replacement) {
+            const regex = new RegExp(find, 'g');
+            return target.replace(regex, replacement);
+        }
+
+        function ReplaceDouble(target, replacement) {
+            const regex = /\b(\w+)\s+\1\b/g;
+            return target.replace(regex, replacement);
+        }
+
+        function StartCap(target) {
+            return target.replace(/(^|\.\s+)([a-z])/g, function(match) {
+                return match.toUpperCase();
+            });
+        }
+
+        function CustomFunction(target) {
+            // Your custom regular expression pattern and logic here
+            // Example:
+            const regex = /pattern/g;
+            return target.replace(regex, 'replacement');
+        }
+
+        // Example usage
+        window.onload = function() {
+            const targetText = "Your target text goes here";
+            console.log("FindCount:", FindCount(targetText, "searchstr"));
+            console.log("FindReplace:", FindReplace(targetText, "find", "replacement"));
+            console.log("ReplaceDouble:", ReplaceDouble(targetText, "replacement"));
+            console.log("StartCap:", StartCap(targetText));
+            console.log("CustomFunction:", CustomFunction(targetText));
+        };
+    </script>
+</head>
+<body>
+    <!-- Optional: You can add HTML elements here for input/output if needed -->
+</body>
+</html>
